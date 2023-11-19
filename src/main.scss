@@ -1,10 +1,18 @@
 @use 'config/reset';
+@use 'config/variaveis';
+@use 'sass:math';
 
-@mixin elementoForm() {
+@mixin elementoForm($margin: 16px) {
     padding: 8px;
     display: block;
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: $margin;
+}
+
+// Função para calcular Em
+@function pixelParaEm($alvoEmPixel, $contextoEmPixel: 16px) {
+    // $alvoEmPixel / $contextoEmPixel
+    @return math.div($alvoEmPixel, $contextoEmPixel)+em;
 }
 
 body {
@@ -19,8 +27,9 @@ body {
 
 header {
     padding: 16px 0;
-    background-color: yellow;
+    background-color: variaveis.$corPrincipal;
     text-align: center;
+    color: #fff;
 }
 
 .form-container {
@@ -29,21 +38,61 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    max-width: 760px;
+
+    h2 {
+        font-size: pixelParaEm(48px); //font-size do body 16px
+        text-align: center;
+    }
 
     form {
         width: 100%;
         max-width: 480px;
         margin-top: 40px;
 
+        label {
+            font-weight: bold;
+            cursor: pointer
+        }
+
         input {
             @include elementoForm();
             background-color: transparent;
             border: none;
-            border-bottom: 1px solid #000;
+            border-bottom: 3px solid variaveis.$corPrincipal;
         }
 
         button {
             @include elementoForm();
+            background-color: variaveis.$corSecundaria;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: bold;
+            color: #fff;
+
+            &:hover { //e comercial para referenciar o proprio seletor (no caso, button)
+                background-color: lighten(variaveis.$corSecundaria, 3%);
+            }
         }
+    }
+}
+
+@media screen and (max-width: variaveis.$mobile) {
+    body {
+        background-color: yellow;
+    }
+
+    // medida alvo / medida atual do contexto
+    // medida alvo / 16px (font-size da tag body)
+    // se no layout utilizamos 32px e a medida atual do contexto 
+    // 32px / 16px = 2em
+
+
+}
+
+@media screen and (max-width: variaveis.$tablet) {
+    .container {
+        max-width: 80%;
     }
 }
