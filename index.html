@@ -1,31 +1,32 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Projeto com SASS</title>
     <link rel="stylesheet" href="./build/main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Nome do site</h1>
+            <h1>Projeto com Sass</h1>
         </div>
     </header>
-    <button class="sucesso" type="button">clique aqui</button>
 
-    <section class="produtos">
-        <div class="container">
-            <div class="produto">
-                <h3>livro de css</h3>
-            </div>
-            <div class="produto">
-                <h3>livro de js</h3>
-            </div>
-            <div class="produto">
-                <h3>livro de sass</h3>
-            </div>
-        </div>
-    </section>
+    <div class="form-container container">
+        <h2>Se inscreva na newsletter para receber dicas sobre CSS</h2>
+        <form>
+            <label for="nome-completo">Nome Completo</label>
+            <input id="nome-completo" type="text" required>
+
+            <label for="email">E-mail</label>
+            <input id="email" type="email" required>
+
+            <button type="submit">Cadastrar</button>
+        </form>
+    </div>
 </body>
 </html>
