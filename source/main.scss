@@ -8,7 +8,7 @@
 
 @mixin container() {
     max-width: 1024px;
-    width: 100%;
+    width: $w100;
     margin: 0 auto;
 }
 
@@ -77,7 +77,7 @@ section {
     width: $w100;
     
     .product-item img {
-        width: 100%;
+        width: $w100;
         border-radius: 16px;
     }
 
@@ -91,7 +91,7 @@ section {
         margin-top: 8px;
 
         &:hover {
-            background-color: lighten($secondaryColor, 3%);
+            background-color: lighten($secondaryColor, $percentage);
         }
     }
 }
@@ -113,6 +113,6 @@ section {
 
     .products {
         grid-template-columns: repeat(2, 48.5%);
-        column-gap: 3%;
+        column-gap: $percentage;
     }
 }
