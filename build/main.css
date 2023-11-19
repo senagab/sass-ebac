@@ -66,14 +66,14 @@ section li {
   border-radius: 16px;
 }
 .products .product-button {
+  color: #fff;
+  text-decoration: none;
   display: block;
   background-color: #44bd32;
-  color: #fff;
   text-align: center;
   padding: 8px 0;
   border-radius: 8px;
   margin-top: 8px;
-  text-decoration: none;
 }
 .products .product-button:hover {
   background-color: #48c935;

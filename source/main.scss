@@ -3,7 +3,7 @@
 
 
 @mixin listStyle() {
-    list-style: none;
+    list-style: $none;
 }
 
 @mixin container() {
@@ -12,13 +12,18 @@
     margin: 0 auto;
 }
 
+@mixin removeUnderlineAddWhite() {
+    color: #fff;
+    text-decoration: $none;
+}
+
 body {
     background-color: $bgColor;
 }
 
 .container {
     max-width: 1024px;
-    width: 100%;
+    width: $w100;
     margin: 0 auto;
 }
 
@@ -48,8 +53,7 @@ header {
             margin-left: 24px;
 
             a {
-                color: #fff;
-                text-decoration: none;
+                @include removeUnderlineAddWhite();
             }
         }
     }
@@ -70,7 +74,7 @@ section {
     grid-template-columns: repeat(3, 32.66%);
     column-gap: 1%;
     row-gap: 4%;
-    width: 100%;
+    width: $w100;
     
     .product-item img {
         width: 100%;
@@ -78,14 +82,13 @@ section {
     }
 
     .product-button {
+        @include removeUnderlineAddWhite();
         display: block;
         background-color: $secondaryColor;
-        color: #fff;
         text-align: center;
         padding: 8px 0;
         border-radius: 8px;
         margin-top: 8px;
-        text-decoration: none;
 
         &:hover {
             background-color: lighten($secondaryColor, 3%);
