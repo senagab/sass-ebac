@@ -1,6 +1,17 @@
 @use 'config/reset' as *;
 @use 'config/variaveis' as *;
 
+
+@mixin listStyle() {
+    list-style: none;
+}
+
+@mixin container() {
+    max-width: 1024px;
+    width: 100%;
+    margin: 0 auto;
+}
+
 body {
     background-color: $bgColor;
 }
@@ -9,6 +20,10 @@ body {
     max-width: 1024px;
     width: 100%;
     margin: 0 auto;
+}
+
+.container {
+    @include container();
 }
 
 header {
@@ -24,14 +39,11 @@ header {
         padding: 16px 0;
     }
 
-    li {
-        list-style: none;
-    }
-
     .menu {
         display: flex;
 
         li {
+            @include listStyle();
             font-weight: bold;
             margin-left: 24px;
 
@@ -45,6 +57,11 @@ header {
 
 section {
     padding: 56px 0;
+
+    li {
+        @include listStyle();
+    }
+    
 }
 
 .products {
@@ -60,12 +77,33 @@ section {
         border-radius: 16px;
     }
 
-    .product-button:hover {
+    .product-button {
+        display: block;
         background-color: $secondaryColor;
+        color: #fff;
+        text-align: center;
+        padding: 8px 0;
+        border-radius: 8px;
+        margin-top: 8px;
+        text-decoration: none;
+
+        &:hover {
+            background-color: lighten($secondaryColor, 3%);
+        }
     }
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: $mobile) {
+    .products {
+        display: block;
+    }
+
+    .product-item  {
+        margin-bottom: 32px;
+    }
+}
+
+@media screen and (max-width: $tablet) {
     .container {
         max-width: 80%;
     }
@@ -73,15 +111,5 @@ section {
     .products {
         grid-template-columns: repeat(2, 48.5%);
         column-gap: 3%;
-    }
-}
-
-@media screen and (max-width: 767px) {
-    .products {
-        display: block;
-    }
-
-    .product-item  {
-        margin-bottom: 32px;
     }
 }
